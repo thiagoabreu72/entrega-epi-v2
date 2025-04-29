@@ -1,0 +1,117 @@
+<div class="container text-center" style="min-width: 800px"></div>
+
+<div class="container">
+  <form [formGroup]="tabela">
+    <div class="">
+      <table class="table-bordered">
+        <thead>
+          <tr>
+            <th class="col-1">Marcar</th>
+            <th class="col-1">Código</th>
+            <th class="col-9">Descrição</th>
+            <th class="col-1">Última Entrega</th>
+            <th class="col-1">Dias Validade</th>
+            <th class="col-1">Devolução Obrigatória</th>
+            <th class="col-1">Qtde em Aberto</th>
+            <th class="col-1">Quantidade</th>
+            <th class="col-1">Medida</th>
+            <th class="col-1">Devolução</th>
+            <th class="col-1">Danificado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let epi of this.dadosEpi; let i = index"
+            formArrayName="valores"
+          >
+            <td>
+              <div formArrayName="selecionado">
+                <input type="checkbox" [formControlName]="i" />
+              </div>
+            </td>
+            <td>{{ epi.codEpi }}</td>
+            <td>{{ epi.desEpi }}</td>
+            <td>{{ epi.ultEnt }}</td>
+            <td>{{ epi.diaVal }}</td>
+            <td>{{ epi.devObr }}</td>
+            <td>{{ epi.qtdAbe }}</td>
+            <td>
+              <div formArrayName="qtdSol">
+                <div *ngIf="epi.altQtd == 'S'">
+                  <input
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    [placeholder]="epi.qtdTot"
+                    [formControlName]="i"
+                  />
+                </div>
+                <div *ngIf="epi.altQtd == 'N'">
+                  {{ epi.qtdTot }}
+                </div>
+              </div>
+            </td>
+            <td>
+              <div formArrayName="medEpi">
+                <div *ngIf="epi.altMed == 'S'">
+                  <input
+                    type="string"
+                    [placeholder]="
+                      epi.medEpi[0] == undefined ? 'N/D' : epi.medEpi
+                    "
+                    class="form-control"
+                    [formControlName]="i"
+                  />
+                </div>
+                <div *ngIf="epi.altMed == 'N'">
+                  {{ epi.medEpi.length == 0 ? "t" : epi.medEpi }}
+                </div>
+              </div>
+            </td>
+            <td>
+              <div formArrayName="qtdDev">
+                <input
+                  type="number"
+                  placeholder="0"
+                  class="form-control"
+                  min="0"
+                  [formControlName]="i"
+                />
+              </div>
+            </td>
+            <td>
+              <div formArrayName="qtdDan">
+                <input
+                  type="number"
+                  placeholder="0"
+                  class="form-control"
+                  min="0"
+                  [formControlName]="i"
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <div class="row justify-content-md-center">
+      <button
+        class="btn btn-primary"
+        (click)="capturaEpis()"
+        style="width: 200px"
+        [disabled]="this.desabilitar"
+      >
+        Gerar RM
+      </button>
+      <!--<button class="btn btn-primary" (click)="this.imprimirRM()">
+        Imprimir RM
+      </button>-->
+    </div>
+    <!--<div class="col centro">
+      <button class="btn btn-primary btn-sm" (click)="this.imprimirRM()">
+        Imprimir RM
+      </button>
+    </div>-->
+  </form>
+</div>

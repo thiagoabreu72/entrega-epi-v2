@@ -1,0 +1,35 @@
+<div class="">
+  <br />
+  <label for="tipo">Tipo</label>
+  <input
+    list="tipo"
+    class="form-control"
+    #valorTipo
+    placeholder="1 - Empregado"
+    (change)="this.capturaValorTipo(valorTipo.value)"
+  />
+  <datalist id="tipo">
+    <option value="1 - Empregado"></option>
+    <option value="2 - Terceiro"></option>
+    <option value="3 - Parceiro"></option>
+  </datalist>
+</div>
+
+<div class="">
+  <br />
+  <label for="colaborador">Colaborador</label>
+  <input
+    list="colaborador"
+    class="form-control"
+    #valorColaborador
+    (click)="valorColaborador.value = ''"
+    (change)="this.buscaDados(valorColaborador.value)"
+  />
+  <datalist id="colaborador">
+    <option
+      *ngFor="let colaborador of this.colaboradores"
+      [value]="colaborador.numCad + ' - ' + colaborador.nomFun"
+    ></option>
+  </datalist>
+  <br />
+</div>

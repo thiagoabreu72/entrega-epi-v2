@@ -1,0 +1,72 @@
+.mensagem-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mensagem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 350px;
+  max-width: 400px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: #edf2f5;
+  // color: rgb(184, 181, 181);
+  font-size: 18px;
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-out, fadeOut 0.3s ease-in 3s forwards;
+}
+
+.mensagem-icon {
+  font-size: 22px;
+}
+
+/* Cores dos mensagems */
+.mensagem-success {
+  // background-color: #28a745;
+  background-color: #b4f3c9;
+  border-color: #5af18c;
+  box-shadow: #333;
+}
+
+.mensagem-error {
+  background-color: #f7b3ba;
+  border-color: #dc3545;
+}
+
+.mensagem-warning {
+  background-color: #fadf8f;
+  border-color: #ffc107;
+  color: #333;
+}
+
+.mensagem-info {
+  background-color: #7092f1;
+  border-color: #1451fa;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

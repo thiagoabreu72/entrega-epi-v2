@@ -1,0 +1,15 @@
+<div [ngClass]="this.classes" role="alert" *ngIf="this.mostrar">
+  {{ this.textoAlerta }}
+  <button
+    type="button"
+    class="close"
+    (click)="this.limpaTexto()"
+    *ngIf="this.tipoAlerta == 2 || this.tipoAlerta == 1"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- <button class="btn btn-primary" (click)="this.mudaClasse(3, 'sdfasd')">
+  teste
+</button> -->

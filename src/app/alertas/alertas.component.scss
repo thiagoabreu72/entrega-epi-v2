@@ -1,0 +1,32 @@
+div.alertAnimado {
+  animation: efeito 5s normal;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  padding: 0.75rem 1.25rem;
+}
+
+.alert-aviso {
+  color: white;
+  background-color: #5ea8f7;
+  border-color: #007bff;
+}
+
+@keyframes efeito {
+  0% {
+    transform: translatex(250%);
+  }
+  20%,
+  30%,
+  40%,
+  50%,
+  60%,
+  70% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}

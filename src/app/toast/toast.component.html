@@ -1,0 +1,10 @@
+<div class="mensagem-container">
+  <div
+    *ngFor="let toast of toasts"
+    class="mensagem"
+    [ngClass]="'mensagem-' + toast.type"
+  >
+    <span class="mensagem-icon">{{ getIcon(toast.type) }}</span>
+    {{ toast.message }}
+  </div>
+</div>

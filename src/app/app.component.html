@@ -1,0 +1,65 @@
+<div action="">
+  <div
+    class="row"
+    style="
+      background-color: #fff;
+      height: 70px;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    "
+  >
+    <div class="col">
+      <h1
+        style="
+          margin-bottom: 22px;
+          color: #999;
+          font-weight: 400;
+          font-size: 16pt;
+          margin-top: 17px;
+        "
+      >
+        ENTREGA DE EPI
+      </h1>
+    </div>
+    <div class="col">
+      <app-toast></app-toast>
+      <!-- <app-alertas
+        [textoAlerta]="this.textoAlerta"
+        [tipoAlerta]="this.tipoAlerta"
+      ></app-alertas> -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <app-spinner [carregandoDados]="this.carregandoDados"></app-spinner>
+          <app-selecao
+            (dadosFoto)="this.capturaValor($event)"
+            (dadosEpi)="this.capturaValorEpis($event)"
+            (carregando)="this.capturaValorCarregando($event)"
+            (dadosColaborador)="this.capturaValorColaborador($event)"
+            (textoAlerta)="this.capturaTextoAlerta($event)"
+            (tipoAlerta)="this.capturaTipoAlertas($event)"
+          ></app-selecao>
+        </div>
+        <div class="col" style="text-align: end">
+          <app-foto [foto]="this.foto"></app-foto>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <app-tabela
+      [dadosEpi]="this.dadosEpis"
+      [dadosColaborador]="this.dadosColaborador"
+      (dadosRM)="this.capturaDadosRM($event)"
+      (carregando)="this.capturaValorCarregando($event)"
+      (textoAlerta)="this.capturaTextoAlerta($event)"
+      (tipoAlerta)="this.capturaTipoAlertas($event)"
+    ></app-tabela>
+  </div>
+  <!--  <div class="card"><app-checkbox></app-checkbox></div> -->
+</div>

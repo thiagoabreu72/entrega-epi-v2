@@ -1,0 +1,16 @@
+{
+    "id": "f2200c3b-c7df-4040-9613-34f697b75889",  
+    "inputData": {
+      "server": "https://senior.soororenner.com.br",
+      "module": "sm",
+      "port": "GetColaborador",
+      "service": "Distrib_EPI_G7",
+      "user": "",
+      "password": "",
+      "encryption": "0",
+      "rootObject": "",
+      "perfil": "prisma.thiago", 
+      "tipoColaborador": 1 
+    }  
+  }
+  
