@@ -133,6 +133,31 @@ export class ServicesService {
     // return this.http.post<any>(this.urlGerarRM, dados, { headers });
   }
 
+  protocolaEntrega(dados: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `bearer ${this.token.access_token}`,
+    });
+
+    dados = this.montarBody('ProtocolaEntrega', dados);
+
+    return this.http.post<any>(this.urlInvoke, dados, { headers });
+  }
+
+  buscaDadosRM(rm: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `bearer ${this.token.access_token}`,
+    });
+
+    let usuario = this.token.username.split('@');
+    let body = { perfil: usuario[0], RM: rm };
+    body = this.montarBody('GetEPIdaRM', body);
+
+    // return this.http.post<any>(this.urlEPIdaRM, body, { headers });
+    return this.http.post<any>(this.urlInvoke, body, { headers });
+  }
+
   montarBody(port: string, inputData: any): any {
     return {
       inputData: {

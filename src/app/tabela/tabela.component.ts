@@ -23,11 +23,16 @@ export class TabelaComponent implements OnChanges {
   @Output() carregando = new EventEmitter<boolean>();
   @Output() tipoAlerta = new EventEmitter<number>();
   @Output() textoAlerta = new EventEmitter<string>();
+  @Output() habilitarProtocolo = new EventEmitter<boolean>();
+  @Output() codigoRM = new EventEmitter<string>();
+
   //@Output() dadosRM: RM; //new EventEmitter<any>();
   dadosRM: RM; //new EventEmitter<any>();
   tabela: FormGroup;
   dadosRelatorio: Relatorio;
-  desabilitar: boolean = true;
+  desabilitarGerarRM: boolean = true;
+  desabilitarProtocolo: boolean = true;
+  desabilitarNova: boolean = true;
 
   constructor(
     private formBuild: FormBuilder,
@@ -131,7 +136,6 @@ export class TabelaComponent implements OnChanges {
     };
 
     for (let i = 0; i < dados.epi.length; i++) {
-      console.log(dados.epi[i].EPI);
       if (
         dados.epi[i].EPI.qtdDan == 0 &&
         dados.epi[i].EPI.qtdDev == 0 &&
@@ -163,12 +167,13 @@ export class TabelaComponent implements OnChanges {
         //console.log(retorno);
         if (retorno.outputData.msgErro == 'ok') {
           this.carregando.emit(false);
-          this.dadosEpi = [];
+          // this.dadosEpi = [];
           this.dadosRelatorio = retorno.outputData.relEst;
           window.scrollTo(0, 0);
+          this.codigoRM.emit(retorno.outputData.RM); //
           this.enviaAlerta(`Requisição: ${retorno.outputData.RM}`, 1);
-          this.imprimirRM();
-          //alert(`Requisição: ${retorno.RM}`);
+          this.desabilitarProtocolo = false;
+          this.desabilitarNova = false;
         } else {
           this.carregando.emit(false);
           window.scrollTo(0, 0);
@@ -188,10 +193,10 @@ export class TabelaComponent implements OnChanges {
   }
 
   desabilitaBotao(valor: boolean) {
-    if (valor == true) this.desabilitar = false;
-    else this.desabilitar = true;
+    if (valor == true) this.desabilitarGerarRM = false;
+    else this.desabilitarGerarRM = true;
 
-    return this.desabilitar;
+    // return this.desabilitarGerarRM;
   }
 
   imprimirRM() {
@@ -204,5 +209,14 @@ export class TabelaComponent implements OnChanges {
       'https://hcm.senior.com.br/integration.html?url=' + this.dadosRelatorio;
     //console.log(link);
     //window.open(link, '_blank');
+  }
+
+  limparCampos() {
+    this.dadosEpi = [];
+    this.desabilitarGerarRM = true;
+    this.desabilitarNova = true;
+    this.desabilitarProtocolo = true;
+    this.habilitarProtocolo.emit(false);
+    window.location.reload();
   }
 }

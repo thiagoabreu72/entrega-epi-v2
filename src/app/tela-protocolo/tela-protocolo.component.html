@@ -1,0 +1,96 @@
+<!-- Dados Tabela -->
+<!-- <thead style="background-color: #f7f9fc"> -->
+
+<div class="container">
+  <form [formGroup]="tabela">
+    <div class="row" style="flex-direction: column; text-align: center">
+      <table class="table-bordered">
+        <thead style="background-color: #f7f9fc">
+          <tr>
+            <th class="col-2">Código</th>
+            <th class="col-4">Descrição</th>
+            <th class="col-2">Quantidade</th>
+            <th class="col-2">Medida</th>
+            <th class="col-2">CA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let epi of dadosEpi; let i = index"
+            formArrayName="valores"
+          >
+            <td>{{ epi.codEpi }}</td>
+            <td>{{ epi.desEpi }}</td>
+            <td>{{ epi.qtdSol }}</td>
+            <td>{{ epi.medEpi }}</td>
+            <td>{{ epi.cerApr }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+  </form>
+</div>
+
+<button
+  class="btn btn-primary botao"
+  data-toggle="modal"
+  data-target="#modalSenha"
+  (click)="this.obtemValorBotao('C')"
+>
+  <!-- [disabled]="this.desCracha" -->
+  Crachá
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalSenha"
+  tabindex="-1"
+  aria-labelledby="modalSenhaLabel"
+  aria-hidden="true"
+  [formGroup]="modal"
+  *ngIf="botaoClicado === 'C'"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSenhaLabel">
+          Efetue a leitura do Crachá
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input
+          id="password"
+          type="password"
+          style="width: -webkit-fill-available"
+          formControlName="pass"
+        />
+        <!-- <input
+          #inputSenha
+          type="password"
+          style="width: -webkit-fill-available"
+          formControlName="pass"
+        /> -->
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-dismiss="modal"
+          (click)="this.protocolaRM()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

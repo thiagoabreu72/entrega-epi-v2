@@ -23,10 +23,6 @@
     </div>
     <div class="col">
       <app-toast></app-toast>
-      <!-- <app-alertas
-        [textoAlerta]="this.textoAlerta"
-        [tipoAlerta]="this.tipoAlerta"
-      ></app-alertas> -->
     </div>
   </div>
 
@@ -59,7 +55,20 @@
       (carregando)="this.capturaValorCarregando($event)"
       (textoAlerta)="this.capturaTextoAlerta($event)"
       (tipoAlerta)="this.capturaTipoAlertas($event)"
+      (habilitarProtocolo)="capturaHabilitacao($event)"
+      (codigoRM)="capturaCodigoRM($event)"
     ></app-tabela>
+    <br /><br />
+    <div class="container text-center">
+      <app-tela-protocolo
+        *ngIf="habilitarProtocolo"
+        [codigoRM]="codigoRM"
+        (textoAlerta)="this.capturaTextoAlerta($event)"
+        (tipoAlerta)="this.capturaTipoAlertas($event)"
+        (carregando)="this.capturaValorCarregando($event)"
+      ></app-tela-protocolo>
+      <!-- *ngIf="habilitarProtocolo" -->
+    </div>
   </div>
   <!--  <div class="card"><app-checkbox></app-checkbox></div> -->
 </div>

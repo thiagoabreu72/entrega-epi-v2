@@ -21,7 +21,7 @@
   // color: rgb(184, 181, 181);
   font-size: 18px;
   font-weight: bold;
-  animation: fadeIn 0.3s ease-out, fadeOut 0.3s ease-in 3s forwards;
+  animation: fadeIn 1s ease-out, fadeOut 1s ease-in 10s forwards;
 }
 
 .mensagem-icon {
@@ -32,7 +32,7 @@
 .mensagem-success {
   // background-color: #28a745;
   background-color: #b4f3c9;
-  border-color: #5af18c;
+  border-color: #127533;
   box-shadow: #333;
 }
 

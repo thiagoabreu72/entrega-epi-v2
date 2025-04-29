@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { AlertasComponent } from './alertas/alertas.component';
 import { ToastComponent } from './toast/toast.component';
+import { TelaProtocoloComponent } from './tela-protocolo/tela-protocolo.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ToastComponent } from './toast/toast.component';
     SpinnerComponent,
     AlertasComponent,
     ToastComponent,
+    TelaProtocoloComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],

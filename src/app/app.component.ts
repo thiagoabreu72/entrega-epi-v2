@@ -17,6 +17,8 @@ export class AppComponent {
   dadosRM: any;
   textoAlerta: string = '';
   tipoAlerta: number = 0;
+  habilitarProtocolo: boolean = false;
+  codigoRM: string = '';
 
   // Obtem a foto do colaborador
   capturaValor(valor: string) {
@@ -43,6 +45,13 @@ export class AppComponent {
 
   capturaTextoAlerta(texto: string) {
     this.textoAlerta = texto;
+  }
+  capturaHabilitacao(valor: boolean) {
+    this.habilitarProtocolo = valor;
+  }
+
+  capturaCodigoRM(valor: string) {
+    this.codigoRM = valor;
   }
 
   capturaTipoAlertas(tipo: number) {

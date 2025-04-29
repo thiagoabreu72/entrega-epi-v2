@@ -4,7 +4,7 @@
   <form [formGroup]="tabela">
     <div class="">
       <table class="table-bordered">
-        <thead>
+        <thead style="background-color: #f7f9fc">
           <tr>
             <th class="col-1">Marcar</th>
             <th class="col-1">Código</th>
@@ -97,21 +97,26 @@
     <br />
     <div class="row justify-content-md-center">
       <button
-        class="btn btn-primary"
+        class="btn btn-primary botao"
         (click)="capturaEpis()"
-        style="width: 200px"
-        [disabled]="this.desabilitar"
+        [disabled]="this.desabilitarGerarRM"
       >
         Gerar RM
       </button>
-      <!--<button class="btn btn-primary" (click)="this.imprimirRM()">
-        Imprimir RM
-      </button>-->
-    </div>
-    <!--<div class="col centro">
-      <button class="btn btn-primary btn-sm" (click)="this.imprimirRM()">
-        Imprimir RM
+      <button
+        class="btn btn-primary botao"
+        (click)="habilitarProtocolo.emit(true)"
+        [disabled]="this.desabilitarProtocolo"
+      >
+        Protocolo RM
       </button>
-    </div>-->
+      <button
+        class="btn btn-primary botao"
+        (click)="limparCampos()"
+        [disabled]="this.desabilitarNova"
+      >
+        Nova Entrega
+      </button>
+    </div>
   </form>
 </div>
