@@ -97,8 +97,13 @@ export class SelecaoComponent {
     this.dadosColaborador.emit(dadosColaborador);
     this.service.buscaFoto(dadosColaborador).subscribe(
       (retorno) => {
-        if (retorno.outputData.temFoto == 1) {
-          this.dadosFoto.emit(`data:image/png;base64,${retorno.outputData.fotBlo}`);
+        if (
+          retorno.outputData.temFoto == 1 &&
+          retorno.outputData.fotBlo !== undefined
+        ) {
+          this.dadosFoto.emit(
+            `data:image/png;base64,${retorno.outputData.fotBlo}`
+          );
           this.buscaEpis(dadosColaborador);
         } else {
           this.dadosFoto.emit('./assets/avatar.jpeg');
@@ -118,7 +123,10 @@ export class SelecaoComponent {
     this.service.buscaEpis(dadosColaborador).subscribe(
       (retorno) => {
         console.log(retorno.outputData.EPI);
-        if (retorno.outputData.msgRet == 'ok' && retorno.outputData.EPI == undefined) {
+        if (
+          retorno.outputData.msgRet == 'ok' &&
+          retorno.outputData.EPI == undefined
+        ) {
           let criaArray = [];
 
           this.dadosEpi.emit(criaArray);
